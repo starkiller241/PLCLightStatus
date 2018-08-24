@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MC_MoveAbsolute" Id="{95b183ec-aab7-41f3-b788-80cdea153fa6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK MC_MoveAbsolute
+VAR_INPUT
+	Axis: AXIS_REF;
+	
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Axis.ReadStatus();]]></ST>
+    </Implementation>
+    <LineIds Name="MC_MoveAbsolute">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

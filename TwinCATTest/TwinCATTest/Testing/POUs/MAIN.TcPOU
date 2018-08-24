@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MAIN" Id="{5e498ecd-2712-4d75-94b7-b5fe70a68cb9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+(*	- Project: My Light Status: A Documented Study OF PLC State Machines
+		- execution process:
+			1. UI Pops up, with both light modules showing up
+			2. Job is to click through the lights using the mouse. Whichever ones are "turned on" will the be packaged as a request file:
+				- when the "submit request" has button has been clicked on
+				- time is fixable, if it isn't fixed, it will be set to 3 seconds
+				- if there is no assignment added to the stack, the LED will shut off
+			3. Output:
+				- edited physical LED state, reflects the UI
+				- update log
+					- previous color
+					- time elapsed for the light state(current, then move it to the log)
+				- blanks out the LED when there's no requests going no
+*)
+VAR
+	
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
