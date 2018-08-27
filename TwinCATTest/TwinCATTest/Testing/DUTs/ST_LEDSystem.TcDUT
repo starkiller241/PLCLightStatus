@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ST_LEDSystem" Id="{7c3a5aa1-adab-48e5-b322-9f65d05a9cb5}">
+    <Declaration><![CDATA[TYPE ST_LEDSystem :
+STRUCT
+	stLED_r: ST_LED(color:="RED");
+	stLED_o: ST_LED(color:="ORANGE");
+	stLED_g: ST_LED(color:="GREEN");
+	arrLog: ARRAY [0..20] OF ST_Log;
+	stRequest_r: ST_Request(stTargetLED:=stLED_r);
+	stRequest_o: ST_Request(stTargetLED:=stLED_o);
+	stRequest_g: ST_Request(stTargetLED:=stLED_g);
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

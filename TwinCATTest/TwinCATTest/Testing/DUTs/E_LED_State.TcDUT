@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="E_LED_State" Id="{95da3d2a-2de2-44ab-b4e6-4ec3038ab5ac}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_LED_State :
+(
+	disabled := 0,
+	enabled := 1,
+	finished := 2	
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <DUT Name="ST_Request" Id="{7602a213-c47c-46d6-9bb5-971c866abf6b}">
+    <Declaration><![CDATA[TYPE ST_Request :
+STRUCT
+	stTargetLED: ST_LED;
+	tTargetTime: TIME;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>
