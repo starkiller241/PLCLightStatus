@@ -5,6 +5,7 @@
 STRUCT
 	stTargetLED: ST_LED;
 	tTargetTime: TIME;
+	exists: BOOL := FALSE;
 END_STRUCT
 END_TYPE]]></Declaration>
   </DUT>

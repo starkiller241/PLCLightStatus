@@ -17,13 +17,116 @@
 				- blanks out the LED when there's no requests going no
 *)
 VAR
-	
+	stSystem : ST_LEDSystem; //creation of the entire system structure, see ST_LEDSystem in DUT
+	//reader variables
+	sRequestInput_r: STRING := EMPTY.sEmptyString;
+	sRequestInput_o: STRING := EMPTY.sEmptyString;
+	sRequestInput_g: STRING := EMPTY.sEmptyString;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[//this portion checks existing status
+
+//TODO: THE FOLLOWING PORTION NEEDS TO BE PUT INTO A CALLABLE FUNCTION CLICK
+//this portion builds and adds a request to the system if it's empty
+IF(stSystem.stRequest_r.exists = FALSE) THEN
+	stSystem.stRequest_r := makeRequest(sTimeInput := sRequestInput_r, stTargetColor := stSystem.stLED_r);
+	stSystem.stRequest_r.exists := TRUE;
+	sRequestInput_r := EMPTY.sEmptyString;
+END_IF
+
+IF(stSystem.stRequest_o.exists = FALSE) THEN
+	stSystem.stRequest_o := makeRequest(sTimeInput := sRequestInput_o, stTargetColor := stSystem.stLED_o);
+	stsystem.stRequest_o := TRUE;
+	sRequestInput_o := EMPTY.sEmptyString;
+END_IF
+
+IF(stSystem.stRequest_g.exists = FALSE) THEN
+	stSystem.stRequest_g := makeRequest(sTimeInput := sRequestInput_r, stTargetColor := stSystem.stLED_g);
+	stSystem.stRequest_g := TRUE;
+	sRequestInput_g := EMPTY.sEmptyString;
+END_IF
+
+//this portion of the code checks if anything is running; if the request exists, then performs the request
+IF(stSystem.stLED_r.eLEDState = E_LED_State.disabled AND stSystem.stRequest_r.exists) THEN
+	//set the LED state
+	stSystem.stLED_r.eLEDState := E_LED_State.enabled;
+	
+	//set the target time
+	stSystem.stLED_r.fbTimer.IN := TRUE;
+	stSystem.stLED_r.fbTimer.PT := stSystem.stRequest_r.tTargetTime;
+	
+	//TODO: ADD THE LOG
+	
+	//clear the request, as it has been passed
+	stSystem.stRequest_r := EMPTY.stEmptyRequest;
+END_IF
+
+IF(stSystem.stLED_o.eLEDState = E_LED_State.disabled AND stSystem.stRequest_o.exists) THEN
+	//set the LED state
+	stSystem.stLED_o.eLEDState := E_LED_State.enabled;
+	
+	//set the target time
+	stSystem.stLED_o.fbTimer.IN := TRUE;
+	stSystem.stLED_o.fbTimer.PT := stSystem.stRequest_o.tTargetTime;
+	
+	//TODO: ADD THE LOG
+	
+	//clear the request, as it has been passed
+	stSystem.stRequest_o := EMPTY.stEmptyRequest;
+END_IF
+
+IF(stSystem.stLED_g.eLEDState = E_LED_State.disabled AND stSystem.stRequest_g.exists) THEN
+	//set the LED state
+	stSystem.stLED_g.eLEDState := E_LED_State.enabled;
+	
+	//set the target time
+	stSystem.stLED_g.fbTimer.IN := TRUE;
+	stSystem.stLED_g.fbTimer.PT := stSystem.stRequest_g.tTargetTime;
+	
+	//TODO: ADD THE LOG
+	
+	//clear the request, as it has been passed
+	stSystem.stRequest_g := EMPTY.stEmptyRequest;
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="18" Count="0" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="115" Count="1" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="124" Count="1" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="131" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="158" Count="1" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="160" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="168" Count="12" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="182" Count="12" />
+      <LineId Id="181" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

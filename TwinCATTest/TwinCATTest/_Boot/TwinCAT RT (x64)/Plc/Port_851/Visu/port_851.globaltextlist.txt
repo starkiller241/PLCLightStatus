@@ -1,0 +1,23 @@
+Id;Default
+448;$TRed
+730;     Orange
+982;    Green
+669;    Orange
+881;    Red
+118;%d
+571;%s
+506;+
+197;Elapsed: 
+84;Elapsed: %d
+133;Graphical Representation of LED Request System and Status
+797;Greee
+353;Green
+677;Make red request
+973;Make Requests
+533;Orange
+377;Red
+593;Request Stack
+638;Request Stack:
+738;String value: %s
+433;String value: %s, Double value:%d
+154;StructuresTest.

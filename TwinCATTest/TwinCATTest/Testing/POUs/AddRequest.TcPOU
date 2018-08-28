@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="AddRequest" Id="{8eefe877-badb-46e8-adb3-f23ae5cd2f81}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION AddRequest : BOOL
+VAR_INPUT
+	
+END_VAR
+VAR
+END_VAR
+VAR_OUTPUT
+	bFinishStatus: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="AddRequest">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

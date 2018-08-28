@@ -44,10 +44,10 @@
             <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
               <v>FB_Init</v>
               <v>0307b01e-8ebf-430a-9064-02dd8d6cd4e8</v>
-              <v>FB_Exit</v>
-              <v>631674b7-ce3c-476c-a2e9-f16857018ca1</v>
               <v>FB_Reinit</v>
               <v>cf5fd303-2666-4598-b410-82b0021857e5</v>
+              <v>FB_Exit</v>
+              <v>631674b7-ce3c-476c-a2e9-f16857018ca1</v>
             </d>
             <v n="FbName">"NotImportant"</v>
             <v n="FbGuid">{0916dd9e-6f1c-4596-acd8-ab142955324a}</v>
@@ -465,34 +465,34 @@
             <d n="FbMethods" t="CaseInsensitiveHashtable" ckt="String" cvt="Guid">
               <v>ExecuteLooseCapture</v>
               <v>f523b739-28c1-4fe3-9cb4-4091866bb173</v>
-              <v>ExecuteMouseUp</v>
-              <v>48adc9c3-6d3c-4b6a-bc96-a67424cdfac3</v>
               <v>Init</v>
               <v>1b375daa-241b-408f-af8f-fd358d601e25</v>
               <v>FB_Exit</v>
               <v>15cc279c-46fd-4019-af9f-3d5dddc4d091</v>
               <v>ExecuteMouseDblClick</v>
               <v>4dcab2b4-c846-4084-950f-c0644fd0007f</v>
-              <v>GetElementInfo</v>
-              <v>317dbd62-0990-4740-8b8e-5a8749680ed1</v>
               <v>ExecuteMouseDown</v>
               <v>2424bcdf-c4c3-4bf8-a389-caf6addeb417</v>
+              <v>ExecuteMouseUp</v>
+              <v>48adc9c3-6d3c-4b6a-bc96-a67424cdfac3</v>
+              <v>ExecuteMouseEnter</v>
+              <v>dc2fccb9-97b0-48ad-9450-55b33619dbe7</v>
               <v>FB_Reinit</v>
               <v>49237b98-369b-4125-9548-ae38e58a7d98</v>
-              <v>Initialize</v>
-              <v>d1c4b5ea-04a2-4a6a-8eaa-6af1e2192d8b</v>
-              <v>ExecuteMouseMove</v>
-              <v>6acca068-9e9c-41bf-895b-786afc5710dc</v>
+              <v>GetElementInfo</v>
+              <v>317dbd62-0990-4740-8b8e-5a8749680ed1</v>
+              <v>abstrGetDefaultCursor</v>
+              <v>fb42bfac-e5e6-4aa6-ba41-646e09eb7def</v>
               <v>ExecuteDialogClosed</v>
               <v>c1c5505f-f30e-411a-af8a-34f68011aca6</v>
               <v>ExecuteKeyUp</v>
               <v>0a7ea734-26d6-4901-997f-0a0dd71f3a66</v>
               <v>ExecuteKeyDown</v>
               <v>10962993-aedc-4c35-82df-284f2178b416</v>
-              <v>abstrGetDefaultCursor</v>
-              <v>fb42bfac-e5e6-4aa6-ba41-646e09eb7def</v>
-              <v>ExecuteMouseEnter</v>
-              <v>dc2fccb9-97b0-48ad-9450-55b33619dbe7</v>
+              <v>ExecuteMouseMove</v>
+              <v>6acca068-9e9c-41bf-895b-786afc5710dc</v>
+              <v>Initialize</v>
+              <v>d1c4b5ea-04a2-4a6a-8eaa-6af1e2192d8b</v>
               <v>ExecuteMouseLeave</v>
               <v>b0a66e12-0837-472b-a735-cba0fb7e1a80</v>
               <v>FB_Init</v>
@@ -580,5 +580,36 @@
         <Type n="VisualManagerViewSettings">{ec9b2ec6-92a2-4856-be72-7866fb274c64}</Type>
       </TypeList>
     </XmlArchive>
+    <WebVisu Name="WebVisualization" Id="{381c8c79-55f6-4f69-9fea-f08cc415ea34}">
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="WebVisualizationObject">
+            <o n="ViewSettings" t="WebVisualizationViewSettings">
+              <v n="StartVisu">"Visualization"</v>
+              <v n="HtmFileName">"webvisu"</v>
+              <v n="UpdateRate">200</v>
+              <v n="CommBufferSize">50000</v>
+              <v n="BestFit">true</v>
+              <v n="ClientSizeMode" t="VisualClientSizeMode">AutoDetect</v>
+              <v n="ClientSizeX">1280</v>
+              <v n="ClientSizeY">1024</v>
+              <v n="ForceWebVisuClient">false</v>
+              <v n="Antialiasing">true</v>
+              <v n="ClientOperationType" t="eDefaultInputSetting">Touchscreen</v>
+              <v n="ScaleTypeIsotropic">false</v>
+            </o>
+          </o>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="eDefaultInputSetting">{bd122c9a-5824-461f-8b56-d89816d314bf}</Type>
+          <Type n="Int32">System.Int32</Type>
+          <Type n="String">System.String</Type>
+          <Type n="VisualClientSizeMode">{c37fe731-4f69-4d98-82fe-4f9aefbe200d}</Type>
+          <Type n="WebVisualizationObject">{0fdbf158-1ae0-47d9-9269-cd84be308e9d}</Type>
+          <Type n="WebVisualizationViewSettings">{00207769-37aa-45a4-ae43-8435c5f1880b}</Type>
+        </TypeList>
+      </XmlArchive>
+    </WebVisu>
   </VisuManager>
 </TcPlcObject>
