@@ -676,7 +676,7 @@
                     </o>
                     <o>
                       <v n="Id">1999528970L</v>
-                      <v n="Value">"MAIN.stSystem.stLED_r.eLEDState = E_LED_State.enabled"</v>
+                      <v n="Value">"MAIN.stSystem.stLED_g.eLEDState = E_LED_State.enabled"</v>
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
@@ -2779,12 +2779,20 @@
                 <v n="VisualElementIdentifier">"GenElemInst_56"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
                   <v>OnMouseDown</v>
                   <a cet="STSnippetInputAction">
                     <o>
-                      <v n="STSnippet">"IF(Main.stSystem.stRequest_r.exists = false) THEN
-	Main.stSystem.stRequest_r.exists := TRUE;
+                      <v n="STSnippet">"IF(MAIN.stSystem.stRequest_r.exists = FALSE) THEN
+
+	IF len(Main.sUserRequestInput_r) = 0 THEN
+		Main.stSystem.stRequest_r.tTargetTime := T#3S;
+	ELSE
+		Main.stSystem.stRequest_r.tTargetTime := STRING_TO_TIME(Main.sUserRequestInput_r);
+	END_IF
+
+	MAIN.stSystem.stRequest_r.exists := TRUE;
+	MAIN.sUserRequestInput_r := EMPTY.sEmptyString;
 END_IF"</v>
                     </o>
                   </a>
@@ -2945,12 +2953,20 @@ END_IF"</v>
                 <v n="VisualElementIdentifier">"GenElemInst_58"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseDown</v>
                   <a cet="STSnippetInputAction">
                     <o>
-                      <v n="STSnippet">"IF(Main.stSystem.stRequest_o.exists = FALSE) THEN
-	Main.stSystem.stRequest_o.exists := true;
+                      <v n="STSnippet">"IF(MAIN.stSystem.stRequest_o.exists = FALSE) THEN
+
+	IF len(Main.sUserRequestInput_o) = 0 THEN
+		Main.stSystem.stRequest_o.tTargetTime := T#3S;
+	ELSE
+		Main.stSystem.stRequest_o.tTargetTime := STRING_TO_TIME(Main.sUserRequestInput_o);
+	END_IF
+
+	MAIN.stSystem.stRequest_o.exists := TRUE;
+	MAIN.sUserRequestInput_o := EMPTY.sEmptyString;
 END_IF"</v>
                     </o>
                   </a>
@@ -3111,24 +3127,20 @@ END_IF"</v>
                 <v n="VisualElementIdentifier">"GenElemInst_60"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="STSnippetInputAction[]">
                   <v>OnMouseDown</v>
-                  <a et="IInputAction">
-                    <o t="InputBoxInputAction">
-                      <v n="InputBoxVariable">""</v>
-                      <v n="InputType">"Default"</v>
-                      <v n="InputBoxMin">""</v>
-                      <v n="InputBoxMax">""</v>
-                      <v n="InputBoxDialogTitle">""</v>
-                      <v n="Password">false</v>
-                      <v n="UseTextOutputVariable">true</v>
-                      <v n="TextOutputVariableInitialized">false</v>
-                      <v n="OtherVarConversion">""</v>
-                      <v n="Format">""</v>
-                    </o>
-                    <o t="STSnippetInputAction">
-                      <v n="STSnippet">"IF(Main.stSystem.stRequest_g.exists = FALSE) THEN
-	Main.stSystem.stRequest_g.exists := true;
+                  <a cet="STSnippetInputAction">
+                    <o>
+                      <v n="STSnippet">"IF(MAIN.stSystem.stRequest_g.exists = FALSE) THEN
+
+	IF len(Main.sUserRequestInput_g) = 0 THEN
+		Main.stSystem.stRequest_g.tTargetTime := T#3S;
+	ELSE
+		Main.stSystem.stRequest_g.tTargetTime := STRING_TO_TIME(Main.sUserRequestInput_g);
+	END_IF
+
+	MAIN.stSystem.stRequest_g.exists := TRUE;
+	MAIN.sUserRequestInput_g := EMPTY.sEmptyString;
 END_IF"</v>
                     </o>
                   </a>
@@ -3282,7 +3294,7 @@ END_IF"</v>
                   <v>OnMouseDown</v>
                   <a cet="InputBoxInputAction">
                     <o>
-                      <v n="InputBoxVariable">"MAIN.sRequestInput_r"</v>
+                      <v n="InputBoxVariable">"MAIN.sUserRequestInput_r"</v>
                       <v n="InputType">"Edit"</v>
                       <v n="InputBoxMin">""</v>
                       <v n="InputBoxMax">""</v>
@@ -3444,7 +3456,7 @@ END_IF"</v>
                   <v>OnMouseDown</v>
                   <a cet="InputBoxInputAction">
                     <o>
-                      <v n="InputBoxVariable">"MAIN.sRequestInput_o"</v>
+                      <v n="InputBoxVariable">"MAIN.sUserRequestInput_o"</v>
                       <v n="InputType">"Edit"</v>
                       <v n="InputBoxMin">""</v>
                       <v n="InputBoxMax">""</v>
@@ -3606,7 +3618,7 @@ END_IF"</v>
                   <v>OnMouseDown</v>
                   <a cet="InputBoxInputAction">
                     <o>
-                      <v n="InputBoxVariable">"MAIN.sRequestInput_g"</v>
+                      <v n="InputBoxVariable">"MAIN.sUserRequestInput_g"</v>
                       <v n="InputType">"InputWithLimits"</v>
                       <v n="InputBoxMin">""</v>
                       <v n="InputBoxMax">""</v>
@@ -3821,7 +3833,6 @@ END_IF"</v>
         <Type n="Guid">System.Guid</Type>
         <Type n="Hashtable">System.Collections.Hashtable</Type>
         <Type n="HotkeyConfiguration">{6b108d46-58af-4e41-a3f4-174d8f160cc4}</Type>
-        <Type n="IInputAction">{69265815-ba9d-4bec-bfcb-427fb9172844}</Type>
         <Type n="IInputAction[]">_3S.CoDeSys.VisualElem.IInputAction[], VisualElem, Version=3.5.10.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="InputBoxInputAction">{e8e7e747-f76f-4dee-ab1c-b9637e41ac26}</Type>
         <Type n="InputBoxInputAction[]">_3S.CoDeSys.VisualElem.InputBoxInputAction[], VisualElem.plugin, Version=3.5.10.31, Culture=neutral, PublicKeyToken=null</Type>

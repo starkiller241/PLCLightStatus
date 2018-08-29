@@ -6,7 +6,8 @@ STRUCT
 	eLEDState: E_LED_STATE;
 	eLEDErrorStatus: E_LED_Errors;
 	bRequestApproved: BOOL;
-	fbTimer: TON;
+	fbTimer: TON := (IN:=FALSE);
+	fbTrigger: R_TRIG := (CLK:=fbTimer.Q);
 	tTarget: TIME;
 	color: STRING;
 END_STRUCT
