@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="F_WRITE_MEMORY" Id="{9508e750-2377-4d61-b7ae-cade5d933b3d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_WRITE_MEMORY : BOOL
+VAR_INPUT
+	cbData : UDINT;
+	pData : POINTER TO BYTE;
+	cbBuffer : UDINT;
+	pBuffer : POINTER TO BYTE;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FW_MemMove(pDest:=pBuffer + cbData,pSrc:=pBuffer,cbLen:=cbBuffer-cbData);
+
+FW_MemMove(pDest:=pBuffer,pSrc:=pData,cbLen:=cbData);]]></ST>
+    </Implementation>
+    <LineIds Name="F_WRITE_MEMORY">
+      <LineId Id="7" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

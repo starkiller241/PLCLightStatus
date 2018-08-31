@@ -5,6 +5,7 @@
 VAR_GLOBAL
 	stEmptyRequest: ST_Request := ();
 	sEmptyString: STRING := '';
+	tTime: DT;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

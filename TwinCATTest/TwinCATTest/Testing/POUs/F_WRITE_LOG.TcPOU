@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="F_WRITE_LOG" Id="{b70c0d0e-64b6-48e2-a10d-88c7e228e0d9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_WRITE_LOG : BOOL
+VAR_INPUT
+	inputColor: ST_LED; 
+	status: STRING;
+END_VAR
+VAR
+	stLOG: ST_Log := (sStatus:=CONCAT(CONCAT(status, ' -'), inputColor.color)); //log to be added to the log collection
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[stLog.sTime := EMPTY.tTime;
+F_WRITE_MEMORY(cbData:=SIZEOF(stLog),pData:=ADR(stLog),cbBuffer:=SIZEOF(MAIN.stSystem.arrLog),pBuffer:=ADR(MAIN.stSystem.arrLog));]]></ST>
+    </Implementation>
+    <LineIds Name="F_WRITE_LOG">
+      <LineId Id="40" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

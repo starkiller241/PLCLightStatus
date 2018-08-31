@@ -9,9 +9,11 @@ Id;Default
 506;+
 197;Elapsed: 
 84;Elapsed: %d
+774;Elapsed: %s
 133;Graphical Representation of LED Request System and Status
 797;Greee
 353;Green
+221;MAIN.stSystem.arrLog[INDEX].sStatus
 677;Make red request
 973;Make Requests
 533;Orange

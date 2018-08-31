@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="TimeReceive" Id="{e2b0b802-57ec-4410-9d05-df3e8e4d9f69}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION TimeReceive
+VAR
+Date_and_time_in_seconds	: UDINT;
+Local_date_time_seconds	: UDINT;
+Date_and_Time_result	: UDINT;
+Local_date_time_from_secs	: SYSTIMEDATE;
+Date_and_time_string	: STRING;
+Err_result: UDINT;
+END_VAR
+VAR_OUTPUT
+Date_and_time_format	: DATE_AND_TIME;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Get time in seconds since 1970 :
+Date_and_time_in_seconds := SysTimeRtcGet(Err_result);
+IF Date_and_Time_result <> 0 THEN
+RETURN;
+END_IF
+
+// Convert UTC seconds to local time seconds, regarding Timezone and Summer time :
+Date_and_Time_result := SysTimeRtcConvertUtcToLocal(Date_and_time_in_seconds, Local_date_time_seconds);
+IF Date_and_Time_result <> 0 THEN
+RETURN;
+END_IF
+
+// Convert the UTC seconds to a DATE_AND_TIME variable dt#yyyy-mm-dd-hh:mm:ss :
+Date_and_time_format := UDINT_TO_DT(Local_date_time_seconds);
+RETURN;
+
+// Convert DATE_AND_TIME to a String :
+Date_and_time_string := DT_TO_STRING(Date_and_time_format);]]></ST>
+    </Implementation>
+    <LineIds Name="TimeReceive">
+      <LineId Id="63" Count="13" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="77" Count="1" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

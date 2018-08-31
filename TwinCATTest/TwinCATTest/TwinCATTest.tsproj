@@ -1837,7 +1837,7 @@ External Setpoint Generation:
 			</Project>
 		</Plc>
 		<Io>
-			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="10.160.29.112.2.1" RemoteName="Device 1 (EtherCAT)" Id="1">
+			<Device Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="10.160.29.112.2.1" RemoteName="Device 1 (EtherCAT)" Id="1">
 				<Name>Device 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>

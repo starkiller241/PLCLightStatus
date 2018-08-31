@@ -25,110 +25,98 @@ VAR
 	//reader variables
 	sUserRequestInput_r: STRING := EMPTY.sEmptyString;
 	sUserRequestInput_o: STRING := EMPTY.sEmptyString;
-	sUserRequestInput_g: STRING := EMPTY.sEmptyString;
-END_VAR]]></Declaration>
+	sUserRequestInput_g: STRING := EMPTY.sEmptyString;	
+END_VAR ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-//this portion checks existing status
+      <ST><![CDATA[EMPTY.tTime := TimeReceive();
 
-//TODO: THE FOLLOWING PORTION NEEDS TO BE PUT INTO A CALLABLE FUNCTION CLICK
-//this portion of the code checks if anything is running; if the request exists, then performs the request
+fbTimerRed(IN:=stSystem.stProcessing_r.exists, PT:=stSystem.stProcessing_r.tTargetTime);
+fbTimerOrange(IN:=stSystem.stProcessing_o.exists, PT:=stSystem.stProcessing_o.tTargetTime);
+fbTimerGreen(IN:=stSystem.stProcessing_g.exists, PT:=stSystem.stProcessing_g.tTargetTime);
+
 IF(stSystem.stLED_r.eLEDState = E_LED_State.disabled AND stSystem.stRequest_r.exists) THEN
-	print := 'bazooka red';
-	
-	//set the target time
-	fbtimerRed(IN := TRUE, PT := T#2S);
-//	fbtimerRed(IN := TRUE, PT := stSystem.stRequest_r.tTargetTime);
-	
-	//TODO: ADD THE LOG
-	
-	//clear the request, as it has been passed
+	stSystem.stProcessing_r := stSystem.stRequest_r;
 	stSystem.stRequest_r := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_r,status:='color processed');
 END_IF
 
 IF(stSystem.stLED_o.eLEDState = E_LED_State.disabled AND stSystem.stRequest_o.exists) THEN
-	print := 'bazooka orange';
-
-	//set the target time	
-	fbTimerOrange(IN := stSystem.stLED_o.eLEDState = E_LED_State.disabled AND stSystem.stRequest_o.exists, PT := stSystem.stRequest_o.tTargetTime);
-	//function block state
-	
-	//TODO: ADD THE LOG
-	
-	//clear the request, as it has been passed
+	stSystem.stProcessing_o := stSystem.stRequest_o;
 	stSystem.stRequest_o := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_o,status:='color processed');
 END_IF
 
 IF(stSystem.stLED_g.eLEDState = E_LED_State.disabled AND stSystem.stRequest_g.exists) THEN
-	print := 'bazooka green';
-
-	//set the target time	
-	fbTimerGreen(IN := TRUE, PT := stSystem.stRequest_g.tTargetTime);
-
-	//TODO: ADD THE LOG
-	
-	//clear the request, as it has been passed
+	stSystem.stProcessing_g := stSystem.stRequest_g;
 	stSystem.stRequest_g := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_g,status:='color processed');
 END_IF
 
-//take timer status and apply it to the state of the LED
-IF(stSystem.stLED_g.eLEDState = E_LED_State.enabled AND fbTimerGreen.Q) THEN
+IF(fbTimerGreen.IN) THEN
+	stSystem.stLED_g.eLEDState := E_LED_State.enabled;
+END_IF
+
+IF(fbTimerOrange.IN) THEN
+	stSystem.stLED_o.eLEDState := E_LED_State.enabled;
+END_IF
+
+IF(fbTimerRed.IN) THEN
+	stSystem.stLED_r.eLEDState := E_LED_State.enabled;
+END_IF
+
+IF(fbTimerGreen.Q) THEN
 	stSystem.stLED_g.eLEDState := E_LED_State.disabled;
+	stSystem.stProcessing_g := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_g,status:='process complete');
 END_IF
 
-IF(stSystem.stLED_o.eLEDState = E_LED_State.enabled AND fbTimerOrange.Q) THEN
+IF(fbTimerOrange.Q) THEN
 	stSystem.stLED_o.eLEDState := E_LED_State.disabled;
+	stSystem.stProcessing_o := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_o,status:='process complete');
 END_IF
 
-IF(stSystem.stLED_r.eLEDState = E_LED_State.enabled AND fbTimerRed.Q) THEN
+IF(fbTimerRed.Q) THEN
 	stSystem.stLED_r.eLEDState := E_LED_State.disabled;
-END_IF
-
-IF(stSystem.stLED_g.eLEDState = E_LED_State.disabled AND fbTimerGreen.IN = TRUE) THEN
-	stSystem.stLED_g.eLEDState := E_LED_State.enabled;	
-END_IF
-
-IF(stSystem.stLED_o.eLEDState = E_LED_State.disabled AND fbTimerOrange.IN = TRUE) THEN
-	stSystem.stLED_o.eLEDState := E_LED_State.enabled;	
-END_IF
-
-IF(stSystem.stLED_r.eLEDState = E_LED_State.disabled AND fbTimerRed.IN = TRUE) THEN
-	stSystem.stLED_r.eLEDState := E_LED_State.enabled;	
+	stSystem.stProcessing_r := EMPTY.stEmptyRequest;
+	F_WRITE_LOG(inputColor:=stSystem.stLED_r,status:='process complete');
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="508" Count="0" />
-      <LineId Id="405" Count="2" />
-      <LineId Id="427" Count="1" />
-      <LineId Id="569" Count="0" />
-      <LineId Id="431" Count="1" />
-      <LineId Id="599" Count="0" />
-      <LineId Id="533" Count="0" />
-      <LineId Id="435" Count="7" />
-      <LineId Id="570" Count="0" />
-      <LineId Id="580" Count="0" />
-      <LineId Id="446" Count="0" />
-      <LineId Id="598" Count="0" />
-      <LineId Id="600" Count="0" />
-      <LineId Id="577" Count="0" />
-      <LineId Id="450" Count="6" />
-      <LineId Id="572" Count="1" />
-      <LineId Id="460" Count="0" />
-      <LineId Id="536" Count="1" />
-      <LineId Id="464" Count="3" />
+      <LineId Id="797" Count="0" />
+      <LineId Id="796" Count="0" />
+      <LineId Id="744" Count="0" />
+      <LineId Id="640" Count="1" />
+      <LineId Id="630" Count="0" />
+      <LineId Id="428" Count="0" />
+      <LineId Id="637" Count="0" />
+      <LineId Id="439" Count="0" />
+      <LineId Id="697" Count="0" />
+      <LineId Id="440" Count="2" />
+      <LineId Id="638" Count="0" />
+      <LineId Id="453" Count="0" />
+      <LineId Id="696" Count="0" />
+      <LineId Id="454" Count="2" />
+      <LineId Id="639" Count="0" />
+      <LineId Id="467" Count="0" />
+      <LineId Id="695" Count="0" />
       <LineId Id="181" Count="0" />
       <LineId Id="490" Count="0" />
-      <LineId Id="489" Count="0" />
-      <LineId Id="491" Count="2" />
+      <LineId Id="642" Count="0" />
+      <LineId Id="644" Count="9" />
+      <LineId Id="643" Count="0" />
+      <LineId Id="491" Count="1" />
+      <LineId Id="658" Count="0" />
+      <LineId Id="692" Count="0" />
+      <LineId Id="493" Count="0" />
       <LineId Id="495" Count="0" />
-      <LineId Id="538" Count="6" />
-      <LineId Id="582" Count="0" />
-      <LineId Id="581" Count="0" />
-      <LineId Id="585" Count="1" />
-      <LineId Id="588" Count="2" />
-      <LineId Id="587" Count="0" />
-      <LineId Id="592" Count="2" />
-      <LineId Id="591" Count="0" />
+      <LineId Id="538" Count="1" />
+      <LineId Id="655" Count="0" />
+      <LineId Id="693" Count="0" />
+      <LineId Id="540" Count="3" />
+      <LineId Id="657" Count="0" />
+      <LineId Id="701" Count="0" />
+      <LineId Id="544" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

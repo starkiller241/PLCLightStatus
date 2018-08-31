@@ -6,10 +6,13 @@ STRUCT
 	stLED_r: ST_LED := (color:='RED');
 	stLED_o: ST_LED := (color:='ORANGE');
 	stLED_g: ST_LED := (color:='GREEN');
-	arrLog: ARRAY [0..20] OF ST_Log;
+	arrLog: ARRAY [0..100] OF ST_Log;
 	stRequest_r: ST_Request := ();
 	stRequest_o: ST_Request := ();
 	stRequest_g: ST_Request := ();
+	stProcessing_r: ST_Request := ();
+	stProcessing_o: ST_Request := ();
+	stProcessing_g: ST_Request := ();
 END_STRUCT
 END_TYPE
 ]]></Declaration>

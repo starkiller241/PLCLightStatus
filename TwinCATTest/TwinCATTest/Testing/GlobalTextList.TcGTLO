@@ -56,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"774"</v>
+              <v n="TextDefault">"Elapsed: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"133"</v>
               <v n="TextDefault">"Graphical Representation of LED Request System and Status"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -68,6 +73,11 @@
             <o>
               <v n="TextID">"353"</v>
               <v n="TextDefault">"Green"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"221"</v>
+              <v n="TextDefault">"MAIN.stSystem.arrLog[INDEX].sStatus"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

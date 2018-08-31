@@ -3,10 +3,8 @@
   <DUT Name="ST_Log" Id="{e8a01d42-1619-4507-ab5f-483454a2bd02}">
     <Declaration><![CDATA[TYPE ST_Log :
 STRUCT
-	tTime: TIME;
-	sCompletion: STRING;
-	stTargetLED: ST_LED;
-	tET: TIME;
+	sTime: DT;
+	sStatus: STRING;
 END_STRUCT
 END_TYPE]]></Declaration>
   </DUT>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="TriggerCurrentTime" Id="{8bbadcdc-af8c-42f4-bac5-1b3dcc2fd6cd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION TriggerCurrentTime : BOOL
+VAR_INPUT
+END_VAR
+VAR
+END_VAR
+VAR_OUTPUT
+	returner: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+RETURN;]]></ST>
+    </Implementation>
+    <LineIds Name="TriggerCurrentTime">
+      <LineId Id="7" Count="0" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
